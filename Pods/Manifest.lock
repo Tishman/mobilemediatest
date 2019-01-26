@@ -1,0 +1,22 @@
+PODS:
+  - GCDWebServer (3.4.2):
+    - GCDWebServer/Core (= 3.4.2)
+  - GCDWebServer/Core (3.4.2)
+  - SideMenu (5.0.2)
+
+DEPENDENCIES:
+  - GCDWebServer (~> 3.0)
+  - SideMenu
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GCDWebServer
+    - SideMenu
+
+SPEC CHECKSUMS:
+  GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
+  SideMenu: e5094f0b2e7d9609e100a90ae69025abd994f882
+
+PODFILE CHECKSUM: 8db32df9491541c52183bbc398749e1054532e3e
+
+COCOAPODS: 1.5.3

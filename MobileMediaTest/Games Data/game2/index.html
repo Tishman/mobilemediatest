@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="css/reset.css" type="text/css">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+	<meta name="msapplication-tap-highlight" content="no"/>
+
+        <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/createjs-2013.12.12.min.js"></script>
+        <script type="text/javascript" src="js/ctl_utils.js"></script>
+        <script type="text/javascript" src="js/sprite_lib.js"></script>
+        <script type="text/javascript" src="js/settings.js"></script>
+        <script type="text/javascript" src="js/CSlotSettings.js"></script>
+        <script type="text/javascript" src="js/CLang.js"></script>
+        <script type="text/javascript" src="js/CPreloader.js"></script>
+        <script type="text/javascript" src="js/CMain.js"></script>
+        <script type="text/javascript" src="js/CTextButton.js"></script>
+        <script type="text/javascript" src="js/CGfxButton.js"></script>
+        <script type="text/javascript" src="js/CToggle.js"></script>
+        <script type="text/javascript" src="js/CBetBut.js"></script>
+        <script type="text/javascript" src="js/CMenu.js"></script>
+        <script type="text/javascript" src="js/CGame.js"></script>
+        <script type="text/javascript" src="js/CReelColumn.js"></script>
+        <script type="text/javascript" src="js/CInterface.js"></script>
+        <script type="text/javascript" src="js/CPayTablePanel.js"></script>
+        <script type="text/javascript" src="js/CStaticSymbolCell.js"></script>
+        <script type="text/javascript" src="js/CTweenController.js"></script>
+        
+    </head>
+    <body ondragstart="return false;" ondrop="return false;" >
+	<div style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%"></div>
+          <script>
+            $(document).ready(function(){
+                     var oMain = new CMain({
+                                    win_occurrence: 60,
+                                    slot_cash: 45000,                                   min_reel_loop: 2,                                    reel_delay: 6,                                     time_show_win: 2000,                                    time_show_all_wins: 2000,                                    money: INITIAL_BUDGET,                                    ad_show_counter: 3
+                                });
+
+                    $(oMain).on("start_session", function (evt) {
+                        if(getParamValue('ctl-arcade') === "true"){
+                            parent.__ctlArcadeStartSession();
+                        }
+                    });
+
+                    $(oMain).on("end_session", function (evt) {
+                        if(getParamValue('ctl-arcade') === "true"){
+                            parent.__ctlArcadeEndSession();
+                        }
+                    });
+
+                    $(oMain).on("save_score", function (evt, iMoney) {
+                        localStorage.setItem('money', iMoney);
+                        window.location = "savescore://"+iMoney;
+                        if(getParamValue('ctl-arcade') === "true"){
+                          parent.__ctlArcadeSaveScore({score:iMoney});
+                        }
+                    });
+
+                    $(oMain).on("show_interlevel_ad", function (evt) {
+                        if(getParamValue('ctl-arcade') === "true"){
+                            parent.__ctlArcadeShowInterlevelAD();
+                        }
+                    });
+
+                    $(oMain).on("share_event", function(evt, iScore) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeShareEvent({   
+                                                                img: TEXT_SHARE_IMAGE,
+                                                                title: TEXT_SHARE_TITLE,
+                                                                msg: TEXT_SHARE_MSG1 + iScore+ TEXT_SHARE_MSG2,
+                                                                msg_share: TEXT_SHARE_SHARE1 + iScore + TEXT_SHARE_SHARE1});
+                           }
+                    });
+                     
+                    if(isIOS()){
+                        setTimeout(function(){sizeHandler();},200);
+                    }else{
+                        sizeHandler();
+                    }
+           });
+
+        </script>
+        <canvas id="canvas" class='ani_hack' width="1500" height="640"> </canvas>
+        <div id="block_game" style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%; display:none"></div>
+    </body>
+</html>
