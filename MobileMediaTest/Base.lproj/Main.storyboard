@@ -27,20 +27,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Item 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edO-BC-sGQ">
-                                            <rect key="frame" x="16" y="11" width="317" height="22"/>
+                                            <rect key="frame" x="16" y="11" width="93" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6AY-hW-nMf">
+                                            <rect key="frame" x="117" y="11" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="bottom" secondItem="SPg-GH-UV7" secondAttribute="bottomMargin" id="3H3-fW-eAT"/>
-                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="trailing" secondItem="SPg-GH-UV7" secondAttribute="trailingMargin" id="D4i-bg-0FH"/>
-                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="top" secondItem="SPg-GH-UV7" secondAttribute="topMargin" id="jrb-Gh-ma8"/>
-                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="leading" secondItem="SPg-GH-UV7" secondAttribute="leadingMargin" id="s8t-Gg-5zt"/>
+                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="leading" secondItem="SPg-GH-UV7" secondAttribute="leadingMargin" id="3we-7d-y7C"/>
+                                        <constraint firstItem="6AY-hW-nMf" firstAttribute="top" secondItem="SPg-GH-UV7" secondAttribute="top" constant="11" id="Lni-Ii-e8J"/>
+                                        <constraint firstItem="6AY-hW-nMf" firstAttribute="leading" secondItem="edO-BC-sGQ" secondAttribute="trailing" constant="8" id="Tjh-2G-HK9"/>
+                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="bottom" secondItem="SPg-GH-UV7" secondAttribute="bottomMargin" id="d0c-V8-xqA"/>
+                                        <constraint firstItem="edO-BC-sGQ" firstAttribute="top" secondItem="SPg-GH-UV7" secondAttribute="topMargin" id="eVA-I3-va6"/>
+                                        <constraint firstAttribute="bottom" secondItem="6AY-hW-nMf" secondAttribute="bottom" constant="12.5" id="hhH-aa-AgE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="6AY-hW-nMf" id="A3I-j6-XMv"/>
                                     <outlet property="menuTitle" destination="edO-BC-sGQ" id="VKT-JN-0nY"/>
                                 </connections>
                             </tableViewCell>

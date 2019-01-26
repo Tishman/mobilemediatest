@@ -44,16 +44,19 @@ class MenuViewController: UITableViewController, UINavigationControllerDelegate 
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let menuCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
         switch indexPath.row {
         case 0:
             self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
             break
-        case 1:            
+        case 1:
+            menuCell.activityIndicator.startAnimating()
             let firstGameFolderPath = Bundle.main.path(forResource: "game1", ofType: nil)
             ServerService.gcdWebServer.addGETHandler(forBasePath: "/", directoryPath: firstGameFolderPath!, indexFilename: "index.html", cacheAge: 0, allowRangeRequests: true)
             ServerService.gcdWebServer.start(withPort: 8080, bonjourName: "GCD Web Server")
             self.perform(#selector(showGameVC), with: nil, afterDelay: 1) //Delay for launching WebServer
         case 2:
+            menuCell.activityIndicator.startAnimating()
             let secondGameFolderPath = Bundle.main.path(forResource: "game2", ofType: nil)
             ServerService.gcdWebServer.addGETHandler(forBasePath: "/", directoryPath: secondGameFolderPath!, indexFilename: "index.html", cacheAge: 0, allowRangeRequests: true)
             ServerService.gcdWebServer.start(withPort: 8080, bonjourName: "GCD Web Server")

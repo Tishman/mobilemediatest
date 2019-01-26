@@ -11,6 +11,7 @@ import UIKit
 class MenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var menuTitle: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     func updateCell(title: String) {
         menuTitle.text = title
