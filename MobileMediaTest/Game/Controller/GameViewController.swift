@@ -12,27 +12,27 @@ import WebKit
 class GameViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     @IBOutlet weak var webView: WKWebView!
-    var totalLoad = 1
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
         guard let gameUrl = ServerService.gcdWebServer.bonjourServerURL else { return }
         webView.load(URLRequest(url: gameUrl))
     }
     
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if totalLoad != 0 {
-            guard let gameUrl = ServerService.gcdWebServer.bonjourServerURL else { return }
-            webView.load(URLRequest(url: gameUrl))
-            totalLoad -= 1
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        switch UIDevice.current.orientation {
+        case .landscapeLeft:
+            refresh(refreshButton)
+        case .landscapeRight:
+            refresh(refreshButton)
+        case .portrait:
+            refresh(refreshButton)
+        default:
+            break
         }
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscapeRight
     }
     
     override func viewDidDisappear(_ animated: Bool) {

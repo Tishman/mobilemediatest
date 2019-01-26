@@ -93,6 +93,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="refreshButton" destination="lNX-Ea-ZRa" id="8Pc-8x-NDo"/>
                         <outlet property="webView" destination="JyS-ba-8l4" id="QFI-Os-Gkn"/>
                     </connections>
                 </viewController>
