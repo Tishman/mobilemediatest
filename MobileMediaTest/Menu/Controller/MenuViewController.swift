@@ -45,10 +45,10 @@ class MenuViewController: UITableViewController, UINavigationControllerDelegate 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
+        
         switch indexPath.row {
         case 0:
             self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
-            break
         case 1:
             menuCell.activityIndicator.startAnimating()
             let firstGameFolderPath = Bundle.main.path(forResource: "game1", ofType: nil)
@@ -64,6 +64,7 @@ class MenuViewController: UITableViewController, UINavigationControllerDelegate 
         default:
             break
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
